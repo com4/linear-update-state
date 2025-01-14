@@ -1,0 +1,5 @@
+name: 'Linear: Update State'
+description: 'Update issue state in Linear'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
