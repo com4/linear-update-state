@@ -10,7 +10,11 @@ import urllib.error
 import urllib.request
 
 GH_TOKEN = os.getenv("GITHUB_TOKEN", None)
-GH_API_URL = os.getenv("GITHUB_API_URL", None)
+GH_API_URL_BASE = os.getenv("GITHUB_API_URL", None)
+GH_OWNER = os.getenv("GITHUB_REPOSITORY_OWNER", None)
+GH_REPO_NAME = os.getenv("GITHUB_REPOSITORY", None)
+
+GH_API_URL = f"{GH_API_URL_BASE}/{GH_OWNER}/{GH_REPO_NAME}"
 
 class HttpError(Exception):
     """Describe an unrecoverable HTTP error."""
