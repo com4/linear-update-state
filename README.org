@@ -1,0 +1,5 @@
+* Linear: Update State
+This action updates the states of Linear issues. This action differs from other
+Linear state change actions by trying to intelligently determine which issues
+have been merged rather than assuming all tickets from [old state] should be
+moved to [new state].
