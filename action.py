@@ -155,6 +155,11 @@ if __name__ == "__main__":
     from pprint import pprint
     print(f"Requesting {GH_API_URL}/pulls?state=closed")
     response = make_request(
-        url=f"{GH_API_URL}/pulls?state=closed"
+        url=f"{GH_API_URL}/pulls?state=closed",
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {GH_TOKEN}",
+            "X-GitHub-Api-Version": "2022-11-28"
+        }
     )
     pprint(response)
