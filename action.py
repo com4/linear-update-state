@@ -17,8 +17,8 @@ GH_REPO_PATH = os.getenv("GITHUB_REPOSITORY", None)
 
 LINEAR_TICKET_PREFIX = "DEV"
 
-GH_API_URL = fr"{GH_API_URL_BASE}/repos/{GH_REPO_PATH}"
-LINEAR_ISSUE_RE = re.compile(f'.*\/({LINEAR_TICKET_PREFIX}-\d+)', re.IGNORECASE)
+GH_API_URL = f"{GH_API_URL_BASE}/repos/{GH_REPO_PATH}"
+LINEAR_ISSUE_RE = re.compile(fr'.*({LINEAR_TICKET_PREFIX}-\d+)', re.IGNORECASE)
 
 class HttpError(Exception):
     """Describe an unrecoverable HTTP error."""
