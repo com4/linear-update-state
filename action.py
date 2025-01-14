@@ -17,7 +17,7 @@ GH_REPO_PATH = os.getenv("GITHUB_REPOSITORY", None)
 
 LINEAR_TICKET_PREFIX = "DEV"
 
-GH_API_URL = f"{GH_API_URL_BASE}/repos/{GH_REPO_PATH}"
+GH_API_URL = fr"{GH_API_URL_BASE}/repos/{GH_REPO_PATH}"
 LINEAR_ISSUE_RE = re.compile(f'.*\/({LINEAR_TICKET_PREFIX}-\d+)', re.IGNORECASE)
 
 class HttpError(Exception):
