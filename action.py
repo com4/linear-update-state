@@ -174,7 +174,7 @@ if __name__ == "__main__":
 
     for pr in data:
         branch_name = pr.get("head", {}).get("ref", "")
-        linear_issue_match = LINEAR_ISSUE_PR.match(branch_name)
+        linear_issue_match = LINEAR_ISSUE_RE.match(branch_name)
         if linear_issue_match is None:
             continue
         issues.append(linear_issue_match[1])
