@@ -4,7 +4,7 @@ inputs:
   GITHUB_TOKEN:
     description: Used to read pull request information to find tickets to update.
     required: true
-    default: ${{ github.token }}
+    default: ${{ secrets.GITHUB_TOKEN }}
 runs:
   using: 'docker'
   image: 'Dockerfile'
