@@ -1,5 +1,10 @@
 name: 'Linear: Update State'
 description: 'Update issue state in Linear'
+inputs:
+  GITHUB_TOKEN:
+    description: Used to read pull request information to find tickets to update.
+    required: true
+    default: ${{ github.token }}
 runs:
   using: 'docker'
   image: 'Dockerfile'
