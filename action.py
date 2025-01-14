@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from dataclasses import dataclass
+from functools import cached_property
 import json
 import os
 import ssl
@@ -37,6 +38,9 @@ class HttpResponse:
     headers: dict[str, str]
     body: bytes
 
+    @cached_property
+    def json(self):
+        return json.loads(self.body)
 
 def make_request(
     *,
@@ -162,4 +166,4 @@ if __name__ == "__main__":
             "X-GitHub-Api-Version": "2022-11-28"
         }
     )
-    pprint(response)
+    pprint(response.json)
