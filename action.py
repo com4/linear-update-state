@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from functools import cached_property
 import json
 import os
+import re
 import ssl
 import sys
 from time import sleep
@@ -14,7 +15,10 @@ GH_TOKEN = os.getenv("INPUT_GITHUB_TOKEN", None)
 GH_API_URL_BASE = os.getenv("GITHUB_API_URL", None)
 GH_REPO_PATH = os.getenv("GITHUB_REPOSITORY", None)
 
+LINEAR_TICKET_PREFIX = "DEV"
+
 GH_API_URL = f"{GH_API_URL_BASE}/repos/{GH_REPO_PATH}"
+LINEAR_ISSUE_RE = re.compile(f'.*\/({LINEAR_TICKET_PREFIX}-\d+)', re.IGNORECASE)
 
 class HttpError(Exception):
     """Describe an unrecoverable HTTP error."""
@@ -156,7 +160,6 @@ def make_request(
         return response
 
 if __name__ == "__main__":
-    from pprint import pprint
     response = make_request(
         url=f"{GH_API_URL}/pulls?state=all",
         headers={
@@ -165,4 +168,15 @@ if __name__ == "__main__":
             "X-GitHub-Api-Version": "2022-11-28"
         }
     )
-    pprint(response.json)
+    data = response.json
+
+    issues = []
+
+    for pr in data:
+        branch_name = pr.get("head", {}).get("ref", "")
+        linear_issue_match = LINEAR_ISSUE_PR.match(branch_name)
+        if linear_issue_match is None:
+            continue
+        issues.append(linear_issue_match[1])
+
+    print(issues)
