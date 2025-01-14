@@ -9,7 +9,7 @@ from typing import Optional
 import urllib.error
 import urllib.request
 
-GH_TOKEN = os.getenv("GITHUB_TOKEN", None)
+GH_TOKEN = os.getenv("INPUT_GITHUB_TOKEN", None)
 GH_API_URL_BASE = os.getenv("GITHUB_API_URL", None)
 GH_REPO_PATH = os.getenv("GITHUB_REPOSITORY", None)
 
