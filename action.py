@@ -13,7 +13,7 @@ GH_TOKEN = os.getenv("GITHUB_TOKEN", None)
 GH_API_URL_BASE = os.getenv("GITHUB_API_URL", None)
 GH_REPO_PATH = os.getenv("GITHUB_REPOSITORY", None)
 
-GH_API_URL = f"{GH_API_URL_BASE}/{GH_REPO_PATH}"
+GH_API_URL = f"{GH_API_URL_BASE}/repos/{GH_REPO_PATH}"
 
 class HttpError(Exception):
     """Describe an unrecoverable HTTP error."""
